@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body {
+	header {
+		.navbar-brand {				
+			img {
+				height: 10rem;
+			}
+		}
+	}
+	
+	main {
+		ul {
+			li {
+				list-style: none;
+				display: block;
+				
+				.pizza-card {
+					height: 15rem;
+					
+					img {
+						object-fit: contain;
+						max-height: 100%;
+					}
+				}
+			}
+		}
+	}
+}

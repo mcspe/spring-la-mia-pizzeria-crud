@@ -20,16 +20,16 @@ public class Pizza {
 	private String description;
 	
 	@Column(length = 1000)
-	private String foto;
+	private String img;
 	
 	private int price;
 	
 	public Pizza() {}
 	
-	public Pizza(String name, String description, String foto, int price) {
+	public Pizza(String name, String description, String img, int price) {
 		setName(name);
 		setDescription(description);
-		setFoto(foto);
+		setImg(img);
 		setPrice(price);
 	}
 	
@@ -53,12 +53,12 @@ public class Pizza {
 		this.description = description;
 	}
 
-	public String getFoto() {
-		return foto;
+	public String getImg() {
+		return img;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public int getPrice() {
