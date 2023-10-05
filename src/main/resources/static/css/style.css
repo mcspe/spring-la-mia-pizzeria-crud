@@ -7,6 +7,25 @@ body {
 				height: 10rem;
 			}
 		}
+		form {
+			position: relative;
+			
+			input {
+				border-radius: 1.5rem;
+				padding: .5rem 1rem;
+				&:focus {
+					outline: none;
+				}
+			}
+			
+			button {
+				position: absolute;
+				top: .5rem;
+				right: .5rem;
+				border: none;
+				background: none;
+			}
+		}
 	}
 	
 	main {

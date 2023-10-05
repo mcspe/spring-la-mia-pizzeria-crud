@@ -24,5 +24,9 @@ public class PizzaService {
 	public Pizza findById(int id) {
 		return pizzaRepo.findById(id).get();
 	}
+	
+	public List<Pizza> search(String pizza) {
+		return pizzaRepo.findByNameContainingOrDescriptionContaining(pizza, pizza);
+	}
 
 }
