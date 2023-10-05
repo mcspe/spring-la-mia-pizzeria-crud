@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="card(${pizza})" class="p-3">
-	<div class="pizza-card card text-bg-dark d-flex justify-content-center align-items-center">
-		<img th:src="*{img}" class="card-img" alt="*{name}">
-		<div class="card-img-overlay bg-dark bg-opacity-50">
-			<h3 class="card-title">[[*{name}]]</h3>
+	<a th:href="@{details/{id}(id=*{id})}">
+		<div class="pizza-card card text-bg-dark d-flex justify-content-center align-items-center">
+			<img th:src="*{img}" class="card-img" alt="*{name}">
+			<div class="card-img-overlay bg-dark bg-opacity-50">
+				<h3 class="card-title">[[*{name}]]</h3>
+			</div>
 		</div>
-	</div>
+	</a>
 </div>
 
 </html>
