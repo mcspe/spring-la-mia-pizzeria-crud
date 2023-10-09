@@ -2,22 +2,24 @@
 
 body {
 	header {
-		.navbar-brand {				
+		.navbar-brand {
 			img {
 				height: 10rem;
 			}
 		}
+
 		form {
 			position: relative;
-			
+
 			input {
 				border-radius: 1.5rem;
 				padding: .5rem 1rem;
+
 				&:focus {
 					outline: none;
 				}
 			}
-			
+
 			button {
 				position: absolute;
 				top: .5rem;
@@ -27,21 +29,27 @@ body {
 			}
 		}
 	}
-	
+
 	main {
 		ul {
 			li {
 				list-style: none;
 				display: block;
-				
+
 				.pizza-card {
 					height: 15rem;
-					
+
 					img {
 						object-fit: contain;
 						max-height: 100%;
 					}
 				}
+			}
+		}
+
+		form {
+			.ms-form {
+				flex: 0 0 35%;
 			}
 		}
 	}
