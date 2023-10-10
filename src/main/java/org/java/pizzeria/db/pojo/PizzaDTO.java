@@ -4,20 +4,11 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-@Entity
 public class PizzaDTO {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	
 	@Column(length = 40, nullable = false)
 	@Length(min = 3, max = 40, message = "Pizza name must have between 3 and 40 characters")
@@ -48,7 +39,6 @@ public class PizzaDTO {
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -56,7 +46,6 @@ public class PizzaDTO {
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -64,7 +53,6 @@ public class PizzaDTO {
 	public String getImg() {
 		return img;
 	}
-
 	public void setImg(String img) {
 		this.img = img;
 	}
@@ -72,7 +60,6 @@ public class PizzaDTO {
 	public float getPrice() {
 		return price;
 	}
-	
 	public void setPrice(float price) {
 		this.price = price;
 	}

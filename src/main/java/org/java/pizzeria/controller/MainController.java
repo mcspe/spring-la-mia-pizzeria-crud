@@ -68,19 +68,64 @@ public class MainController {
 			BindingResult bindingResult, 
 			Model model
 			) {
+				
+		return savePizza(pizzaDTO, bindingResult, model, new Pizza(), true);
+		
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String getUpdate(@PathVariable int id, Model model) {
+		
+		String pageTitle = "Edit Pizza";
+		
+		Pizza pizza = pizzaService.findById(id);
+		float fPrice = (float)(pizza.getPrice() / 100f);
+		PizzaDTO pizzaDTO = new PizzaDTO(pizza.getName(), pizza.getDescription(), pizza.getImg(), fPrice);
+		
+		model.addAttribute("pageTitle", pageTitle);
+		model.addAttribute("pizzaDTO", pizzaDTO);
+		
+		return "edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(
+			@Valid @ModelAttribute PizzaDTO pizzaDTO, 
+			BindingResult bindingResult, 
+			Model model,
+			@PathVariable int id
+		) {
+		
+		Pizza pizza = pizzaService.findById(id);
+		
+		return savePizza(pizzaDTO, bindingResult, model, pizza, false);
+		
+	}
+	
+	private String savePizza(PizzaDTO pizzaDTO, BindingResult bindingResult, Model model, Pizza pizza, boolean newPizza) {
 		
 		if(bindingResult.hasErrors()) {
 			System.out.println("Error:");
-			bindingResult.getAllErrors().forEach(System.out::println);
+			bindingResult.getAllErrors().stream().map(e -> e.getDefaultMessage()).forEach(System.out::println);
 					
-			return "create";
+			return newPizza ? "create" : "edit";
 		}
+
+		pizza = dtoToEntity(pizza, pizzaDTO);
 		
-		Pizza pizza = new Pizza(pizzaDTO.getName(),	pizzaDTO.getDescription(), pizzaDTO.getImg(), pizzaDTO.getIntPrice());
-	
 		pizzaService.save(pizza);
 		
 		return "redirect:/details/" + pizza.getId();
+		
+	}
+	
+	private Pizza dtoToEntity(Pizza pizza, PizzaDTO pizzaDTO) {
+		pizza.setName(pizzaDTO.getName());
+		pizza.setDescription(pizzaDTO.getDescription());
+		pizza.setImg(pizzaDTO.getImg());
+		pizza.setPrice(pizzaDTO.getIntPrice());
+		
+		return pizza;
 	}
 	
 }
