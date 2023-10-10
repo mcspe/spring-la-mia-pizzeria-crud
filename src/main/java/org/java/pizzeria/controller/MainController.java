@@ -102,6 +102,15 @@ public class MainController {
 		
 	}
 	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable int id) {
+		
+		Pizza pizza = pizzaService.findById(id);
+		pizzaService.delete(pizza);
+		
+		return "redirect:/";
+	}
+	
 	private String savePizza(PizzaDTO pizzaDTO, BindingResult bindingResult, Model model, Pizza pizza, boolean newPizza) {
 		
 		if(bindingResult.hasErrors()) {
